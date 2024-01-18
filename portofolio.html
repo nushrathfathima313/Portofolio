@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-gOkr8+Y35r2Z5jj0BSStXb4y/t6SL5S8a3pB4IkSNL6wqG9zBiNlFfF1kcgQVw6l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/boxicons.min.js"></script>
+  
+    <title>Web Design Mastery | Responsive Portfolio</title>
+    <script src="js/script.js">
+        const header =document.querySelector("header");
+      window.addEventListener("scroll",function(){
+        header.classList.toggle("sticky",window.scrollY>200)
+      });
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --primary-color: #a855f7;
+  --primary-color-dark: #9333ea;
+  --secondary-color: #a855f7;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --extra-light: #faf5ff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  z-index: 99;
+}
+
+.nav__content {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: 0.3s;
+}
+nav .logo a:hover {
+  color: var(--primary-color-dark);
+}
+
+nav .checkbox {
+  display: none;
+}
+
+nav input {
+  display: none;
+}
+nav .checkbox i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  transition: left 0.3s;
+}
+
+ul li a {
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: 0.3s;
+}
+
+ul li a:hover {
+  border-top-color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.section {
+  background-color: var(--extra-light);
+}
+
+.section__container {
+  min-height: 100vh;
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subtitle {
+  letter-spacing: 2px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.title span {
+  font-weight: 600;
+}
+
+.description {
+  line-height: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.action__btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.action__btns button {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 1rem 2rem;
+  outline: none;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.hire__me {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.hire__me:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.portfolio {
+  color: var(--primary-color);
+}
+
+.portfolio:hover {
+  background-color: var(--primary-color-dark);
+  color: #ffffff;
+}
+
+.image {
+  display: grid;
+  place-items: center;
+}
+
+.image img {
+  width: min(25rem, 90%);
+  border-radius: 100%;
+}
+
+@media (width < 750px) {
+  nav .checkbox {
+    display: block;
+  }
+
+  ul {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 85px);
+    left: -100%;
+    top: 85px;
+    background-color: var(--extra-light);
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  nav #check:checked ~ ul {
+    left: 0;
+  }
+
+  ul li a {
+    font-size: 1.25rem;
+  }
+
+  .section__container {
+    padding: 10rem 1rem 5rem 1rem;
+    text-align: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .image {
+    grid-area: 1/1/2/2;
+  }
+
+  .action__btns {
+    margin: auto;
+  }
+}
+
+header .sticky{
+padding: 15px 11%;
+background: #000;
+border-bottom: 1px solid #4e5055;
+}
+
+
+
+.about {
+  background-color: seashell;
+
+}
+
+.about {
+  min-height: 100vh;
+  max-width: var(--max-width);
+  margin: auto;
+  padding:4rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+.about-img img{
+  width: min(25rem, 90%);
+  border-radius: 50%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text h2 {
+  letter-spacing: 2px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.about-text h5 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.title span {
+  font-weight: 600;
+}
+
+.about-text p {
+  line-height: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+.btn{
+  display: inline-block;
+  padding: 9px 24px;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  border: 2px solid var(--primary-color);
+  border-radius: 2rem;
+  transition: all ease 0.5s;
+  text-decoration: none;
+}
+.btn:hover {
+  transform: scale(1.1);
+  background: transparent;
+  border: 2px solid purple;
+}
+.services {
+  background-color: var(--extra-light);
+  padding:  4rem 1rem; /* Adjust padding as needed */
+  text-align: center;
+}
+
+.service-item {
+  display: grid;
+ /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem; /* Adjust margin as needed */
+}
+
+.service-box {
+  padding: 5rem;
+  background: #f5f5f5; /* Change background color as needed */
+  border-radius: 10px;
+  border: 1px solid #ddd; /* Change border properties as needed */
+  text-align: center;
+  transition: all ease 0.5s;
+}
+
+.service-box i {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: purple; /* Adjust color as needed */
+}
+
+.service-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--text-dark); /* Adjust color as needed */
+}
+
+.service-box p {
+  font-size: 1rem;
+  color: var(--text-light); /* Adjust color as needed */
+  margin-bottom: 1.5rem;
+}
+
+.s-btnn {
+  display: inline-block;
+  padding: 9px 24px;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  border: 2px solid var(--primary-color);
+  border-radius: 2rem;
+  transition: all ease 0.5s;
+  text-decoration: none;
+}
+
+.s-btnn:hover {
+  transform: scale(1.1);
+  background: transparent;
+  border: 2px solid purple;
+  
+}
+.service-box:hover{
+  transform: translateY(-8px);
+  border: 1px solid #4e5055;
+}
+
+
+
+
+
+
+
+
+/* Adjust styles for testimonials */
+.testimonials {
+  background-color: seashell;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.testimonials-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonials-box {
+  padding: 2rem;
+  background: #f5f5f5;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  transition: all ease 0.5s;
+}
+
+.testimonials-box i {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: var(--black); /* Adjust color as needed */
+}
+
+.testimonials-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--text-dark); /* Adjust color as needed */
+}
+
+.testimonials-box p {
+  font-size: 1rem;
+  color: var(--text-light); /* Adjust color as needed */
+  margin-bottom: 1.5rem;
+}
+
+.s-btnn {
+  display: inline-block;
+  padding: 9px 24px;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  border: 2px solid var(--primary-color);
+  border-radius: 2rem;
+  transition: all ease 0.5s;
+  text-decoration: none;
+}
+
+.s-btnn:hover {
+  transform: scale(1.1);
+  background: transparent;
+  border: 2px solid purple;
+}
+
+.testimonials-box:hover {
+  transform: translateY(-8px);
+  border: 1px solid #4e5055;
+}
+.testimonials-box img {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.Skills {
+  background-color: var(--extra-light);
+  padding: 1.5rem 1rem; /* Adjust padding as needed */
+ text-align: center;
+}
+    .Skills-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust the width of the columns as needed */
+      gap: 1rem; /* Adjust the gap between items as needed */
+      justify-items: center;
+      margin-top: 2rem; /* Adjust the margin as needed */
+    }
+
+    .Skills-box {
+      padding: 1rem; /* Adjust padding as needed */
+      background: #f5f5f5;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+      transition: all ease 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .Skills-box i {
+      font-size: 2rem; /* Adjust icon size as needed */
+      margin-bottom: 10px;
+      color: black;
+      
+    }
+ 
+    .Skills-box:hover {
+  transform: translateY(-8px);
+  border: 1px solid #4e5055;
+    }
+
+  .contact{
+    background-color: white;
+  padding: 1.5rem 1rem; /* Adjust padding as needed */
+ text-align: center;
+}
+.contact-box {
+      padding: 1rem; /* Adjust padding as needed */
+      background:plum;
+}
+
+ .ri-mail-line:hover {
+  transform: translateY(-8px);
+  border: 1px solid transparent;
+    }
+    .ri-facebook-box-fill:hover {
+  transform: translateY(-8px);
+  border: 1px solid transparent;
+    }
+    .ri-instagram-fill:hover {
+  transform: translateY(-8px);
+  border: 1px solid transparent;
+    }
+    .ri-twitter-fill:hover {
+  transform: translateY(-8px);
+  border: 1px solid transparent;
+    }
+    @media (max-width: 1060px){
+      .about{
+        grid-template-columns: 1fr;
+      }
+      .about-img{
+        text-align: center;
+        order:2
+      }
+      .about-img img{
+        max-width: 100%;
+        width:600px;
+        height: auto;
+      }
+      .service-item{
+        grid-template-columns: repeat(auto-fit,minmax(350px,auto));
+      }
+.testimonials-items{
+  grid-template-columns: repeat(auto-fit,minmax(350px,auto));
+}
+
+    }
+      
+    }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#">Fathima</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Skills</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="section__container">
+        <div class="content">
+          <p class="subtitle">HELLO</p>
+          <h1 class="title">
+            I'm <span>Fathima<br />a</span> Web Developer
+          </h1>
+          <p class="description">
+            Welcome to my web developer portfolio! I'm Fathima, a skilled and
+            creative web developer with a passion for creating beautiful,
+            responsive, and user-friendly websites. I've worked on a variety of
+            web projects, ranging from personal blogs to e-commerce platforms.
+          </p>
+          <div class="action__btns">
+            <button class="hire__me">Hire Me</button>
+            <button class="portfolio">Portfolio</button>
+          </div>
+        </div>
+        <div class="image">
+          <img src="C:\Users\NUSHRATH\Pictures\Saved Pictures\background.jpg.jpg" alt="profile" />
+        </div>
+      </div>
+      <section class="about" id="About">
+        <div class="about-img">
+          <img src="C:\Users\NUSHRATH\Downloads\img.jpg">
+        </div>
+        <div class="about-text">
+          <h2>About Me</h2>
+          <h5>Iam dynamic Creative Designer <span>photographer and Developer</span></h5>
+          <p>Welcome to my web developer portfolio! I'm Fathima, a skilled and
+            creative web developer with a passion for creating beautiful,
+            responsive, and user-friendly websites. I've worked on a variety of
+            web projects, ranging from personal blogs to e-commerce platforms.
+          </p>
+          <a href="#" class="btn" >Hire Me</a>
+        </div>
+      </section>
+    </section>
+
+    <section class="services" id="services">
+      <div class="text-center">
+        <h2>My Services</h2>
+      </div>
+      <div class="service-item">
+        <div class="service-box">
+          <i class="ri-smartphone-line" ></i>
+          <h3>Web Design</h3>
+          <p>Description about Web Design service Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nisi aspernatur molestiae minus quae nemo, rerum eveniet laudantium provident enim assumenda omnis maiores veniam est accusantium adipisci, autem blanditiis nobis</p>
+          <a href="#" class="s-btnn">Read More</a>
+        </div>
+        <div class="service-box">
+          <i class="ri-code-s-slash-line"></i>
+          <h3>Web Development</h3>
+          <p>Description about Web Development service Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nisi aspernatur molestiae minus quae nemo, rerum eveniet laudantium provident enim assumenda omnis maiores veniam est accusantium adipisci, autem blanditiis nobis</p>
+          <a href="#" class="s-btnn">Read More</a>
+        </div>
+        <div class="service-box">
+          <i class="ri-base-station-fill"></i>
+          <h3>SEO Marketing</h3>
+          <p>Description about SEO Marketing serviceLorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nisi aspernatur molestiae minus quae nemo, rerum eveniet laudantium provident enim assumenda omnis maiores veniam est accusantium adipisci, autem blanditiis nobis.</p>
+          <a href="#" class="s-btnn">Read More</a>
+        </div>
+      </div>
+    </section>
+    
+        
+    <section class="testimonials" id="testimonials">
+      <div class="text-center">
+        <h2>Testimonials</h2>
+      </div>
+      <div class="testimonials-items">
+        <div class="testimonials-box">
+          <img src="C:\Users\NUSHRATH\Downloads\WILLAIM.webp" alt="WILLIAM" width="60" data-testimonials-avatar>
+          <h3>Henry william</h3>
+          <p>
+            Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience
+            and is very concerned about the needs of the client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing
+            elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+          </p>
+        </div>
+    
+        <div class="testimonials-box">
+          <img src="C:\Users\NUSHRATH\Downloads\GIRL.jpeg" alt="MILLER" width="60" data-testimonials-avatar>
+          <h3>Jessica Miller</h3>
+          <p>
+            Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience
+            and is very concerned about the needs of the client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing
+            elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+          </p>
+        </div>
+    
+        <div class="testimonials-box">
+          <img src="C:\Users\NUSHRATH\Downloads\DL.jpeg" alt="Daniel lewis" width="60" data-testimonials-avatar>
+          <h3>Danial Lewis</h3>
+          <p>
+            Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience
+            and is very concerned about the needs of the client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing
+            elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+          </p>
+        </div>
+      </div>
+    </section>
+     
+    <section class="Skills" id="Skills">
+      <div class="text-center">
+        <h2>Skills</h2>
+      </div>
+      <div class="Skills-items">
+        <div class="Skills-box">
+          <i class="ri-html5-line" color="blue"> HTML</i>
+        </div>
+        <div class="Skills-box">
+          <i class="ri-css3-fill">CSS</i>
+        </div>
+        <div class="Skills-box">
+          <i class="ri-javascript-fill">JAVASCRIPT</i> 
+        </div>
+        <div class="Skills-box">
+          <i class="ri-bootstrap-fill">BOOTSTRAP</i>
+        </div>
+        <div class="Skills-box">
+          <i class="ri-reactjs-line">REACT</i>
+        </div>
+    </div>
+    <section>
+   
+      <section class="contact" id="contact">
+      <div class="text-center">
+        <div class="contact-box">
+        <h2>Get in Touch</h2>
+        <p>For more information Contact me </p>
+    
+      <div class="End-icons">
+        <a href="#"><i class="ri-mail-line"></i></a>
+        <a href="#"><i class="ri-facebook-box-fill"></i></a>
+        <a href="#"><i class="ri-instagram-fill"></i></a>
+        <a href="#"><i class="ri-twitter-fill"></i></a>
+</div>
+</div>
+    <section>
+
+
+    <script src="js/script.js">
+      const header=document.querySelector("header");
+      window.addEventListener("scroll",function(){
+        header.classList.toggle("sticky",window.scrollY>200)
+      });
+    </script>
+  </body>
+</html>
